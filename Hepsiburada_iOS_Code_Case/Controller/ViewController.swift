@@ -7,9 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UISearchBarDelegate {
 
-    @IBOutlet weak var searchTextField: UITextField!
+    
+    @IBOutlet weak var searchTextField: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
