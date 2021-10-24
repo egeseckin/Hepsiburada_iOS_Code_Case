@@ -16,63 +16,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainbow" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="it0-qw-Oux">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainbow" translatesAutoresizingMaskIntoConstraints="NO" id="iVj-pu-ssz">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r92-hl-lsN">
-                                <rect key="frame" x="20" y="98" width="374" height="88"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="i1r-2A-ky4">
+                                <rect key="frame" x="14" y="88" width="387" height="122"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="crw-JI-OkR">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="redraw" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xba-62-Fgt">
-                                                <rect key="frame" x="0.0" y="0.0" width="321.5" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITh-6m-MWG">
-                                                <rect key="frame" x="329.5" y="0.0" width="44.5" height="34"/>
-                                                <color key="tintColor" systemColor="tintColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" image="magnifyingglass" catalog="system">
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="axY-ot-7ym"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <searchBar contentMode="scaleToFill" searchBarStyle="minimal" text="" placeholder="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yf-8W-jMO">
+                                        <rect key="frame" x="0.0" y="0.0" width="387" height="51"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3kV-z4-7p2">
-                                        <rect key="frame" x="0.0" y="54" width="374" height="35"/>
+                                        <rect key="frame" x="0.0" y="71" width="387" height="52"/>
                                         <segments>
                                             <segment title="Movies"/>
                                             <segment title="Music"/>
                                             <segment title="Apps"/>
                                             <segment title="Books"/>
                                         </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="selectedSegmentTintColor" systemColor="systemGray4Color"/>
                                     </segmentedControl>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="r92-hl-lsN" secondAttribute="height" multiplier="17:4" id="aTG-bs-VR8"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="it0-qw-Oux" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="42p-Eh-09V"/>
-                            <constraint firstItem="it0-qw-Oux" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Cx9-uK-6U6"/>
-                            <constraint firstAttribute="bottom" secondItem="it0-qw-Oux" secondAttribute="bottom" id="D4a-bw-uji"/>
-                            <constraint firstItem="r92-hl-lsN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="54" id="TlL-to-PoW"/>
-                            <constraint firstItem="r92-hl-lsN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dIz-0s-wDd"/>
-                            <constraint firstAttribute="trailing" secondItem="it0-qw-Oux" secondAttribute="trailing" id="gMK-gs-Bux"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r92-hl-lsN" secondAttribute="trailing" constant="20" id="qzy-HJ-5Pf"/>
+                            <constraint firstItem="iVj-pu-ssz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7gG-Gp-Z3t"/>
+                            <constraint firstAttribute="trailing" secondItem="iVj-pu-ssz" secondAttribute="trailing" id="N0M-vB-sgh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i1r-2A-ky4" secondAttribute="trailing" constant="13" id="S5c-z7-s4O"/>
+                            <constraint firstItem="iVj-pu-ssz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZGT-Hc-5UG"/>
+                            <constraint firstItem="i1r-2A-ky4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="dT3-mN-MfR"/>
+                            <constraint firstAttribute="bottom" secondItem="iVj-pu-ssz" secondAttribute="bottom" id="eke-k5-D5x"/>
+                            <constraint firstItem="i1r-2A-ky4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="v2N-bz-gbA"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="searchTextField" destination="Xba-62-Fgt" id="h7V-2e-dqP"/>
+                        <outlet property="searchTextField" destination="6yf-8W-jMO" id="SlD-hc-KzG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -96,13 +83,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="rainbow" width="736" height="1309"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
