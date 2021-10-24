@@ -99,10 +99,11 @@
 		565FF1602725CDB900D51A61 /* Hepsiburada_iOS_Code_Case */ = {
 			isa = PBXGroup;
 			children = (
+				565FF1922725CFB800D51A61 /* Model */,
+				565FF1912725CFA800D51A61 /* View */,
+				565FF1932725CFBF00D51A61 /* Controller */,
 				565FF1612725CDB900D51A61 /* AppDelegate.swift */,
 				565FF1632725CDB900D51A61 /* SceneDelegate.swift */,
-				565FF1652725CDB900D51A61 /* ViewController.swift */,
-				565FF1672725CDB900D51A61 /* Main.storyboard */,
 				565FF16A2725CDBB00D51A61 /* Assets.xcassets */,
 				565FF16C2725CDBB00D51A61 /* LaunchScreen.storyboard */,
 				565FF16F2725CDBB00D51A61 /* Info.plist */,
@@ -125,6 +126,29 @@
 				565FF1842725CDBB00D51A61 /* Hepsiburada_iOS_Code_CaseUITestsLaunchTests.swift */,
 			);
 			path = Hepsiburada_iOS_Code_CaseUITests;
+			sourceTree = "<group>";
+		};
+		565FF1912725CFA800D51A61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				565FF1672725CDB900D51A61 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		565FF1922725CFB800D51A61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		565FF1932725CFBF00D51A61 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				565FF1652725CDB900D51A61 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
