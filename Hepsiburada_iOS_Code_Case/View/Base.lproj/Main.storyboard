@@ -21,7 +21,7 @@
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="r92-hl-lsN">
-                                <rect key="frame" x="20" y="404" width="374" height="88"/>
+                                <rect key="frame" x="20" y="98" width="374" height="88"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="crw-JI-OkR">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -54,18 +54,20 @@
                                         </segments>
                                     </segmentedControl>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="r92-hl-lsN" secondAttribute="height" multiplier="17:4" id="aTG-bs-VR8"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="r92-hl-lsN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1BG-X2-0bb"/>
                             <constraint firstItem="it0-qw-Oux" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="42p-Eh-09V"/>
                             <constraint firstItem="it0-qw-Oux" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Cx9-uK-6U6"/>
                             <constraint firstAttribute="bottom" secondItem="it0-qw-Oux" secondAttribute="bottom" id="D4a-bw-uji"/>
+                            <constraint firstItem="r92-hl-lsN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="54" id="TlL-to-PoW"/>
                             <constraint firstItem="r92-hl-lsN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dIz-0s-wDd"/>
                             <constraint firstAttribute="trailing" secondItem="it0-qw-Oux" secondAttribute="trailing" id="gMK-gs-Bux"/>
-                            <constraint firstItem="r92-hl-lsN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i3b-pw-ltp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r92-hl-lsN" secondAttribute="trailing" constant="20" id="qzy-HJ-5Pf"/>
                         </constraints>
                     </view>
