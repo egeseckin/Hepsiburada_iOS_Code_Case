@@ -12,6 +12,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var iTunesApiManager = iTunesApiManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +31,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchBar.endEditing(true)
         if(searchBar.text!.count > 2){//User can only search if more than 2 characters are entered.
             print(searchBar.text!)
+            if let term = searchBar.text {
+                iTunesApiManager.fetchTerm(term: term, entity: String)
+            }
             searchBar.text = ""
             searchBar.placeholder = "Search"
             
