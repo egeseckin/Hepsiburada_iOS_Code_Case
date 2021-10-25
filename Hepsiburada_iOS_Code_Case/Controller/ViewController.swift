@@ -10,30 +10,34 @@ import UIKit
 class ViewController: UIViewController, UISearchBarDelegate {
 
     
-    @IBOutlet weak var searchTextField: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchTextField.delegate = self
+        
+        searchBar.delegate = self
     }
-
-    // Search Button actions
-    @IBAction func searchPressed(_ sender: UIButton) {
-        searchTextField.endEditing(true) //used to disappear keyboard after user finishes typing
-        print(searchTextField.text)
+    
+    //MARK: - SearchBar
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            
     }
     
     //Triggered when user enters the words and press search from the keyboard
-    func textFieldReturn(_ textField: UITextField) -> Bool {
-    
-        searchTextField.endEditing(true)
-        return true
-    }
-    
-    func textFieldFinished(_ textField: UITextField){
-        
-        searchTextField.text = ""
-        
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        searchBar.endEditing(true)
+        if(searchBar.text!.count > 2){//User can only search if more than 2 characters are entered.
+            print(searchBar.text!)
+            searchBar.text = ""
+            searchBar.placeholder = "Search"
+            
+        }
+        else{ //If user enters less than 2 characters to searchbar it will promprt error
+            print("Error")
+            searchBar.text = ""
+            searchBar.placeholder = "ERROR"
+        }
     }
 }
 

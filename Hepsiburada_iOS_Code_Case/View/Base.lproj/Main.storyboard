@@ -59,7 +59,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="searchTextField" destination="6yf-8W-jMO" id="SlD-hc-KzG"/>
+                        <outlet property="searchBar" destination="6yf-8W-jMO" id="VlM-OJ-G0u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
