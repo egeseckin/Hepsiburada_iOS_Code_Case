@@ -9,16 +9,35 @@ import UIKit
 
 class ViewController: UIViewController, UISearchBarDelegate {
 
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var iTunesApiManager = iTunesApiManager()
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    var category = "movie"
+    @IBAction func categories(_ sender: UISegmentedControl) {
+        switch segmentControl.selectedSegmentIndex
+            {
+            case 0:
+            category = "movie";
+            case 1:
+            category = "song";
+            case 2:
+            category = "software";
+            case 3:
+            category = "audiobook"
+            default:
+                break;
+            }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchBar.delegate = self
     }
+    
+    var iTunesURLManager = iTunesApiManager()
+    
     
     //MARK: - SearchBar
     
@@ -32,7 +51,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
         if(searchBar.text!.count > 2){//User can only search if more than 2 characters are entered.
             print(searchBar.text!)
             if let term = searchBar.text {
-                iTunesApiManager.fetchTerm(term: term, entity: String)
+                print(category)
+                iTunesURLManager.fetchTerm(term: term, entity: category)
             }
             searchBar.text = ""
             searchBar.placeholder = "Search"
@@ -41,7 +61,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         else{ //If user enters less than 2 characters to searchbar it will promprt error
             print("Error")
             searchBar.text = ""
-            searchBar.placeholder = "ERROR"
+            searchBar.placeholder = "Please provide more than 2 characters"
         }
     }
 }
