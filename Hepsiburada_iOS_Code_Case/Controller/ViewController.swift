@@ -36,7 +36,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchBar.delegate = self
     }
     
-    var iTunesURLManager = iTunesApiManager()
+    var iTunesURLManager = ResultViewController()
     
     
     //MARK: - SearchBar
@@ -48,12 +48,13 @@ class ViewController: UIViewController, UISearchBarDelegate {
     //Triggered when user enters the words and press search from the keyboard
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         searchBar.endEditing(true)
-        if(searchBar.text!.count > 2){//User can only search if more than 2 characters are entered.
+        if(searchBar.text!.count > 2 ){//User can only search if more than 2 characters are entered.
             print(searchBar.text!)
             if let term = searchBar.text {
                 print(category)
                 iTunesURLManager.fetchTerm(term: term, entity: category)
             }
+            performSegue(withIdentifier: "ResultViewSegue", sender: self)
             searchBar.text = ""
             searchBar.placeholder = "Search"
             
@@ -64,6 +65,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
             searchBar.placeholder = "Please provide more than 2 characters"
         }
     }
+    
 }
 
  

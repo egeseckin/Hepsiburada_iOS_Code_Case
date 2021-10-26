@@ -10,8 +10,14 @@ import Foundation
 struct iTunesApiData: Decodable{
     let resultCount: Int
     let results: [Results]
+    
+   
 }
 
 struct Results: Decodable{
-    let collectionPrice: Double
+    let collectionPrice: Double?
+    let collectionName: String
+    let artworkUrl100: String?
+    let releaseDate: String?
+    
 }

@@ -6,15 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
-struct iTunesApiManager{
+class iTunesApiManager: UIViewController{
     
-    let iTunesURL = "https://itunes.apple.com/search?"
     
-    func fetchTerm(term: String, entity: String ){
-        let urlString = "\(iTunesURL)term=\(term)&entity=\(entity)"
-        performRequest(urlString: urlString)
-    }
+    
     
     func performRequest(urlString: String){
         
@@ -31,7 +28,7 @@ struct iTunesApiManager{
                     print(error!)
                 }
                 if let safeData = data{
-                    self.parseJSON(iTunesData: safeData)
+                    //self.parseJSON(iTunesData: safeData)
                 }
             }
             
@@ -39,14 +36,5 @@ struct iTunesApiManager{
             task.resume()
         }
     }
-    func parseJSON(iTunesData: Data ){
-        let decoder = JSONDecoder()
-        do{
-            let decodedData = try decoder.decode(iTunesApiData.self, from: iTunesData)
-            print(decodedData.results[0].collectionPrice)
-        }catch{
-            print(error)
-        }
-        
-    }
+
 }
