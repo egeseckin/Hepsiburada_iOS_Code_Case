@@ -15,9 +15,9 @@ struct iTunesApiData: Decodable{
 }
 
 struct Results: Decodable{
-    let collectionPrice: Double?
+    let collectionPrice: Double
     let collectionName: String
-    let artworkUrl100: String?
-    let releaseDate: String?
+    let artworkUrl100: String
+    let releaseDate: String
     
 }

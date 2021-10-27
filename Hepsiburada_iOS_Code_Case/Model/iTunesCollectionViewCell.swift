@@ -7,41 +7,29 @@
 
 import UIKit
 
+
 class iTunesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var iTunesImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
+    var count = 0
     func setup(with items: iTunesApiData ){
         DispatchQueue.main.async {
-            self.nameLabel.text = items.results[0].collectionName
-            self.priceLabel.text = String(items.results[0].collectionPrice ?? 0)
-            self.dateLabel.text = items.results[0].releaseDate
+            let imageUrl = URL(string: items.results[self.count].artworkUrl100)!
+            let imageData = try! Data(contentsOf: imageUrl)
+            self.iTunesImage.image = UIImage(data: imageData)
+            
+            self.nameLabel.text = "Name:" + items.results[self.count].collectionName
+            self.priceLabel.text = "Price:" + String(items.results[self.count].collectionPrice)
+            self.dateLabel.text = "Release Date:" + items.results[self.count].releaseDate
+            self.count += 1
         }
     }
 }
 
 
 
-extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
-            }
-        }.resume()
-    }
-    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode)
-    }
-}
+

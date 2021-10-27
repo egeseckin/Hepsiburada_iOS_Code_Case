@@ -9,15 +9,18 @@ import UIKit
 
 var iTunesURL = "https://itunes.apple.com/search?"
 
+
+
+
 class ResultViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    
-
+        
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        //collectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
         
@@ -48,7 +51,8 @@ class ResultViewController: UIViewController, UICollectionViewDelegate, UICollec
                     do{
                         let decodedData = try decoder.decode(iTunesApiData.self, from: safeData)
                         if (decodedData.resultCount != 0){
-                            cell.setup(with: decodedData)
+                            
+                                cell.setup(with: decodedData)
                             
                         }
                         
@@ -65,7 +69,27 @@ class ResultViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         return cell
     }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
+            let width = collectionView.frame.width / 2 - 1
+            return CGSize(width: width, height: width)
+        }
+
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 1.0
+        }
+
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 1.0
+        }
+    
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 2 - 1
+
+        return CGSize(width: width, height: width)
+    }
 }
 
