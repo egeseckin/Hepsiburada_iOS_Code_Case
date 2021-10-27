@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+var count = 0
 class iTunesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var iTunesImage: UIImageView!
@@ -15,18 +15,22 @@ class iTunesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    var count = 0
+    
+    
     func setup(with items: iTunesApiData ){
-        DispatchQueue.main.async {
-            let imageUrl = URL(string: items.results[self.count].artworkUrl100)!
+
+            let imageUrl = URL(string: items.results[count].artworkUrl100)!
             let imageData = try! Data(contentsOf: imageUrl)
             self.iTunesImage.image = UIImage(data: imageData)
             
-            self.nameLabel.text = "Name:" + items.results[self.count].collectionName
-            self.priceLabel.text = "Price:" + String(items.results[self.count].collectionPrice)
-            self.dateLabel.text = "Release Date:" + items.results[self.count].releaseDate
-            self.count += 1
-        }
+            self.nameLabel.text = "Name: " + items.results[count].collectionName
+            self.priceLabel.text = "Price: " + String(items.results[count].collectionPrice) + "$"
+            
+            let date = items.results[count].releaseDate.components(separatedBy: "T")
+            self.dateLabel.text = "Date: " + date[0]
+            
+            count += 1
+        
     }
 }
 

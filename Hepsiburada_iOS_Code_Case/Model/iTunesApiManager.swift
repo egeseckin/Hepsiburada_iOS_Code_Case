@@ -8,13 +8,12 @@
 import Foundation
 import UIKit
 
-class iTunesApiManager: UIViewController{
+class iTunesApiManager: ResultViewController{
     
     
     
     
     func performRequest(urlString: String){
-        
         //Create URL
         
         if let url = URL(string: urlString){

@@ -18,12 +18,16 @@ class ResultViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         //collectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
-        
+  
+    
     func fetchTerm(term: String, entity: String ){
         let urlString = "\(iTunesURL)term=\(term)&entity=\(entity)"
             
@@ -33,10 +37,11 @@ class ResultViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iTunesCollectionViewCell", for: indexPath) as! iTunesCollectionViewCell
+    
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let url = URL(string: iTunesURL){
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iTunesCollectionViewCell", for: indexPath) as! iTunesCollectionViewCell
+         if let url = URL(string: iTunesURL){
             //Create URL Session
             let session = URLSession(configuration: .default)
             
@@ -49,11 +54,17 @@ class ResultViewController: UIViewController, UICollectionViewDelegate, UICollec
                 if let safeData = data{
                     let decoder = JSONDecoder()
                     do{
+                        
                         let decodedData = try decoder.decode(iTunesApiData.self, from: safeData)
+                        sleep(1)
                         if (decodedData.resultCount != 0){
-                            
+                            DispatchQueue.main.asyncAfter(deadline: .now()) {
                                 cell.setup(with: decodedData)
                             
+                            }
+                        }
+                        else{
+                            print("No data")
                         }
                         
                     }catch{
@@ -61,35 +72,13 @@ class ResultViewController: UIViewController, UICollectionViewDelegate, UICollec
                     }
                 }
             }
-            
             //Start the task
             task.resume()
         }
         
-        
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-            let width = collectionView.frame.width / 2 - 1
-            return CGSize(width: width, height: width)
-        }
-
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 1.0
-        }
-
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 1.0
-        }
-    
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width / 2 - 1
 
-        return CGSize(width: width, height: width)
-    }
-}
 
