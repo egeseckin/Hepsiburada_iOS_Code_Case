@@ -8,12 +8,8 @@
 import Foundation
 import UIKit
 
-var dataresult = [iTunesApiData]()
 
 class iTunesApiManager: UIViewController{
-    
-    
-    
     
     let iTunesURL = "https://itunes.apple.com/search?"
     
@@ -39,7 +35,8 @@ class iTunesApiManager: UIViewController{
             else{
                 do{
                     let datadecoded = try JSONDecoder().decode(iTunesApiData.self, from: data!)
-                        dataresult = [datadecoded]
+                       // dataresult = [datadecoded]
+                    
                 }catch{
                     print(error)
                 }
