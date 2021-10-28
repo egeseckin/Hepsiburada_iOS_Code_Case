@@ -36,7 +36,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchBar.delegate = self
     }
     
-    var iTunesURLManager = ResultViewController()
+    var iTunesURLManager = iTunesApiManager()
     
     
     //MARK: - SearchBar

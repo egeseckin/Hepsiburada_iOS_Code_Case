@@ -179,6 +179,8 @@
 			dependencies = (
 			);
 			name = Hepsiburada_iOS_Code_Case;
+			packageProductDependencies = (
+			);
 			productName = Hepsiburada_iOS_Code_Case;
 			productReference = 565FF15E2725CDB900D51A61 /* Hepsiburada_iOS_Code_Case.app */;
 			productType = "com.apple.product-type.application";
@@ -251,6 +253,8 @@
 				Base,
 			);
 			mainGroup = 565FF1552725CDB900D51A61;
+			packageReferences = (
+			);
 			productRefGroup = 565FF15F2725CDB900D51A61 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

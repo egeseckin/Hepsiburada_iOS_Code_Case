@@ -5,8 +5,11 @@
 //  Created by Ege Seçkin on 25.10.2021.
 //
 
-import Foundation
+
 import UIKit
+
+
+var dataresult = [iTunesApiData]()
 
 
 class iTunesApiManager: UIViewController{
@@ -24,6 +27,7 @@ class iTunesApiManager: UIViewController{
         
         let url = URL(string: urlString)
         //Create URL Session
+        
         let session = URLSession(configuration: .default)
         
         //Give a task to the session
@@ -35,7 +39,7 @@ class iTunesApiManager: UIViewController{
             else{
                 do{
                     let datadecoded = try JSONDecoder().decode(iTunesApiData.self, from: data!)
-                       // dataresult = [datadecoded]
+                       dataresult = [datadecoded]
                     
                 }catch{
                     print(error)
