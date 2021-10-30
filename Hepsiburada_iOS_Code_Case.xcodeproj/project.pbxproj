@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		563FF41A272D8198009C348D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 563FF419272D8198009C348D /* Alamofire */; };
+		5652BDAB2726ADB800A7E8A7 /* iTunesApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652BDAA2726ADB700A7E8A7 /* iTunesApiManager.swift */; };
 		565FF1622725CDB900D51A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FF1612725CDB900D51A61 /* AppDelegate.swift */; };
 		565FF1642725CDB900D51A61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FF1632725CDB900D51A61 /* SceneDelegate.swift */; };
-		565FF1662725CDB900D51A61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FF1652725CDB900D51A61 /* ViewController.swift */; };
 		565FF1692725CDB900D51A61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565FF1672725CDB900D51A61 /* Main.storyboard */; };
 		565FF16B2725CDBB00D51A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 565FF16A2725CDBB00D51A61 /* Assets.xcassets */; };
 		565FF16E2725CDBB00D51A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565FF16C2725CDBB00D51A61 /* LaunchScreen.storyboard */; };
 		565FF1792725CDBB00D51A61 /* Hepsiburada_iOS_Code_CaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FF1782725CDBB00D51A61 /* Hepsiburada_iOS_Code_CaseTests.swift */; };
 		565FF1832725CDBB00D51A61 /* Hepsiburada_iOS_Code_CaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FF1822725CDBB00D51A61 /* Hepsiburada_iOS_Code_CaseUITests.swift */; };
 		565FF1852725CDBB00D51A61 /* Hepsiburada_iOS_Code_CaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FF1842725CDBB00D51A61 /* Hepsiburada_iOS_Code_CaseUITestsLaunchTests.swift */; };
+		56BE19FC272BF4E60039FD2A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BE19FB272BF4E60039FD2A /* DetailViewController.swift */; };
+		56FF8EDE2726F639001E2E5E /* iTunesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF8EDD2726F639001E2E5E /* iTunesCollectionViewCell.swift */; };
+		56FF8EE02726FA36001E2E5E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF8EDF2726FA36001E2E5E /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5652BDAA2726ADB700A7E8A7 /* iTunesApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesApiManager.swift; sourceTree = "<group>"; };
 		565FF15E2725CDB900D51A61 /* Hepsiburada_iOS_Code_Case.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hepsiburada_iOS_Code_Case.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		565FF1612725CDB900D51A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		565FF1632725CDB900D51A61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		565FF1652725CDB900D51A61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		565FF1682725CDB900D51A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		565FF16A2725CDBB00D51A61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		565FF16D2725CDBB00D51A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,9 @@
 		565FF17E2725CDBB00D51A61 /* Hepsiburada_iOS_Code_CaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Hepsiburada_iOS_Code_CaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		565FF1822725CDBB00D51A61 /* Hepsiburada_iOS_Code_CaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hepsiburada_iOS_Code_CaseUITests.swift; sourceTree = "<group>"; };
 		565FF1842725CDBB00D51A61 /* Hepsiburada_iOS_Code_CaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hepsiburada_iOS_Code_CaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		56BE19FB272BF4E60039FD2A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		56FF8EDD2726F639001E2E5E /* iTunesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesCollectionViewCell.swift; sourceTree = "<group>"; };
+		56FF8EDF2726FA36001E2E5E /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				563FF41A272D8198009C348D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,10 +107,11 @@
 		565FF1602725CDB900D51A61 /* Hepsiburada_iOS_Code_Case */ = {
 			isa = PBXGroup;
 			children = (
+				565FF1922725CFB800D51A61 /* Model */,
+				565FF1912725CFA800D51A61 /* View */,
+				565FF1932725CFBF00D51A61 /* Controller */,
 				565FF1612725CDB900D51A61 /* AppDelegate.swift */,
 				565FF1632725CDB900D51A61 /* SceneDelegate.swift */,
-				565FF1652725CDB900D51A61 /* ViewController.swift */,
-				565FF1672725CDB900D51A61 /* Main.storyboard */,
 				565FF16A2725CDBB00D51A61 /* Assets.xcassets */,
 				565FF16C2725CDBB00D51A61 /* LaunchScreen.storyboard */,
 				565FF16F2725CDBB00D51A61 /* Info.plist */,
@@ -127,6 +136,32 @@
 			path = Hepsiburada_iOS_Code_CaseUITests;
 			sourceTree = "<group>";
 		};
+		565FF1912725CFA800D51A61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				565FF1672725CDB900D51A61 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		565FF1922725CFB800D51A61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5652BDAA2726ADB700A7E8A7 /* iTunesApiManager.swift */,
+				56FF8EDD2726F639001E2E5E /* iTunesCollectionViewCell.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		565FF1932725CFBF00D51A61 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56FF8EDF2726FA36001E2E5E /* ResultViewController.swift */,
+				56BE19FB272BF4E60039FD2A /* DetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +178,9 @@
 			dependencies = (
 			);
 			name = Hepsiburada_iOS_Code_Case;
+			packageProductDependencies = (
+				563FF419272D8198009C348D /* Alamofire */,
+			);
 			productName = Hepsiburada_iOS_Code_Case;
 			productReference = 565FF15E2725CDB900D51A61 /* Hepsiburada_iOS_Code_Case.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +253,9 @@
 				Base,
 			);
 			mainGroup = 565FF1552725CDB900D51A61;
+			packageReferences = (
+				563FF418272D8198009C348D /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 565FF15F2725CDB900D51A61 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,9 +299,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				565FF1662725CDB900D51A61 /* ViewController.swift in Sources */,
 				565FF1622725CDB900D51A61 /* AppDelegate.swift in Sources */,
+				56FF8EE02726FA36001E2E5E /* ResultViewController.swift in Sources */,
+				5652BDAB2726ADB800A7E8A7 /* iTunesApiManager.swift in Sources */,
+				56FF8EDE2726F639001E2E5E /* iTunesCollectionViewCell.swift in Sources */,
 				565FF1642725CDB900D51A61 /* SceneDelegate.swift in Sources */,
+				56BE19FC272BF4E60039FD2A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +668,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		563FF418272D8198009C348D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		563FF419272D8198009C348D /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 563FF418272D8198009C348D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 565FF1562725CDB900D51A61 /* Project object */;
 }
