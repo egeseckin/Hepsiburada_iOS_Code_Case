@@ -7,50 +7,29 @@
 
 
 import UIKit
+import Alamofire
 
-
-var dataresult = [iTunesApiData]()
+//var dataresult = [iTunesApiData]()
 
 
 class iTunesApiManager: UIViewController{
     
-    let iTunesURL = "https://itunes.apple.com/search?"
     
-    func fetchTerm(term: String, entity: String ){
-        let urlString = "\(iTunesURL)term=\(term)&entity=\(entity)"
-        performRequest(urlString: urlString)
-    }
-    
-    func performRequest(urlString: String){
-        
-        //Create URL
-        
-        let url = URL(string: urlString)
-        //Create URL Session
-        
-        let session = URLSession(configuration: .default)
-        
-        //Give a task to the session
-        //Closure
-        let task =  session.dataTask(with: url!) { data, response, error in
-            if error != nil {
-                print(error!)
-            }
-            else{
-                do{
-                    let datadecoded = try JSONDecoder().decode(iTunesApiData.self, from: data!)
-                       dataresult = [datadecoded]
-                    
-                }catch{
-                    print(error)
-                }
+    /*func searchApi(search: String?, category: String)  {
+        guard let term = search , term.count > 2 else {
+            //            self.allData.removeAll()
+            self.collectionView.reloadData()
+            return
+        }
+        AF.request("https://itunes.apple.com/search?term=\(term)&entity=\(category)").responseJSON{(resp) in
+            if let datadecoded = resp.value as? NSDictionary {
+                self.actIN.stopAnimating()
+                dataresult = datadecoded.value(forKey: "results") as! [NSDictionary]
+                limit = 20
+                self.collectionView.reloadData()
                 
             }
         }
         
-        //Start the task
-        task.resume()
-        
-    }
-    
+    }*/
 }
