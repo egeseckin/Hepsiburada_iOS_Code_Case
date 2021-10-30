@@ -9,37 +9,39 @@ import UIKit
 import Alamofire
 
 var dataresult = [NSDictionary]()
-var limit = 20 // items to display in each page
+var cellNumber = 20 // items to display in each page
 
 class ResultViewController: UIViewController,UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var actIN: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var category = "movie"
     
+    //Segmented Control
     @IBAction func categories(_ sender: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex
         {
         case 0:
             category = "movie";
-            limit = 0 // In order to go top of the collectionview in each category we have rest it first
+            cellNumber = 0 // In order to go top of the collectionview in each category we have rest it first
             self.collectionView.reloadData()
             searchApi()
         case 1:
             category = "song";
-            limit = 0
+            cellNumber = 0
             self.collectionView.reloadData()
             searchApi()
         case 2:
             category = "software";
-            limit = 0
+            cellNumber = 0
             self.collectionView.reloadData()
             searchApi()
         case 3:
             category = "audiobook";
-            limit = 0
+            cellNumber = 0
             self.collectionView.reloadData()
             searchApi()
         default:
@@ -49,22 +51,27 @@ class ResultViewController: UIViewController,UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
         searchApi()
     }
     
+    // MARK: API Request
     func searchApi()  {
-        guard let term = searchBar.text , term.count > 2 else { // ıf user enters text less than 2 characters collectionview won't show anything
-            limit = 0
+        self.actIN.startAnimating()
+        // if user enters text less than 2 characters collectionview won't show anything
+        guard let term = searchBar.text , term.count > 2 else {
+            self.actIN.stopAnimating()
+            cellNumber = 0
             self.collectionView.reloadData()
             return
         }
-        AF.request("https://itunes.apple.com/search?term=\(term)&entity=\(category)").responseJSON{(resp) in
-            if let datadecoded = resp.value as? NSDictionary {
+        //Make request to api with Alamofire
+        AF.request("https://itunes.apple.com/search?term=\(term)&entity=\(category)").responseJSON{(result) in
+            if let datadecoded = result.value as? NSDictionary {
+                self.actIN.stopAnimating()
                 dataresult = datadecoded.value(forKey: "results") as! [NSDictionary]
-                limit = 20
+                cellNumber = 20 // If cell number is incremented in previous searches it resets it back to 20
                 self.collectionView.reloadData()
-                
             }
         }
         
@@ -81,41 +88,47 @@ extension ResultViewController: UICollectionViewDelegate,UICollectionViewDataSou
     
     //How many items should be displayed
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        self.actIN.stopAnimating()
         if(dataresult.count != 0 ){
-            if(dataresult.count < limit){
+            if(dataresult.count < cellNumber){
                 return dataresult.count
             }
             else{
-                return limit
+                return cellNumber
             }
         }
         return 0
         
     }
     
-    //For cells in collectionview
+    //For giving attribute to cells in collectionview
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iTunesCollectionViewCell", for: indexPath) as! iTunesCollectionViewCell
         
-        
+        //For image in results cell
         let imageUrl = URL(string: dataresult[indexPath.row].value(forKey: "artworkUrl100") as! String)
         let imageData = try! Data(contentsOf: imageUrl!)
         cell.iTunesImage.image = UIImage(data: imageData)
         
-        
+        //For name in results cell
         cell.nameLabel.text =  "Name: " + (dataresult[indexPath.row].value(forKey: "collectionName") as? String ?? dataresult[indexPath.row].value(forKey: "trackName") as? String ?? "Unknown")
         
+        //For price in results cell
         cell.priceLabel.text = "Price: " + (String(dataresult[indexPath.row].value(forKey: "collectionPrice") as? Double ?? dataresult[indexPath.row].value(forKey: "price") as? Double ?? 0)) + "$"
-        
+        //For date in results cell
         let date = (dataresult[indexPath.row].value(forKey: "releaseDate") as? String)!.components(separatedBy: "T")
         cell.dateLabel.text = "Date: " + date[0]
+        
+        
         return cell
     }
     
     //Pagination
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == limit-1   {
-            limit = limit + 20
+        //Increments the number of cells on the page when it comes to end of page
+        if indexPath.row == cellNumber-1   {
+            self.actIN.startAnimating()
+            cellNumber = cellNumber + 20
             collectionView.reloadData()
         }
     }
@@ -124,18 +137,28 @@ extension ResultViewController: UICollectionViewDelegate,UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detail = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
         
+        //For image in detail page
         let imageUrl = URL(string: dataresult[indexPath.row].value(forKey: "artworkUrl100") as! String)
         let imageData = try! Data(contentsOf: imageUrl!)
         detail?.DetailImage = UIImage(data: imageData)
         
+        //For artist name in detail page
         detail?.DetailArtistName = ("Artist Name: " + (dataresult[indexPath.row].value(forKey: "artistName") as? String ??  "No Artist Name"))
+        
+        //For collection name in detail page
         detail?.DetailCollectionName = ("Collection Name: " + (dataresult[indexPath.row].value(forKey: "collectionName") as? String ?? dataresult[indexPath.row].value(forKey: "collectionName") as? String ?? "Unknown"))
+        
+        //For Track name in detail page
         detail?.DetailTrackName = ("Track Name: " + (dataresult[indexPath.row].value(forKey: "trackName") as? String ?? "No Track Name"))
+        
+        //For price in detail page
         detail?.DetailPrice = ("Price: " + (String(dataresult[indexPath.row].value(forKey: "collectionPrice") as? Double ?? (dataresult[indexPath.row].value(forKey: "price") as? Double ?? 0)) + "$"))
         
+        //For date in detail page
         let date = (dataresult[indexPath.row].value(forKey: "releaseDate") as? String)!.components(separatedBy: "T")
         detail?.DetailReleaseDate = ("Release Date: " + date[0])
         
+        //For description in detail page
         detail?.DetailDescription = ("Description: " + (dataresult[indexPath.row].value(forKey: "description") as? String ?? "No Description"))
         
         self.navigationController?.pushViewController(detail!, animated: true)

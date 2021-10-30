@@ -16,39 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="scaleToFill" searchBarStyle="minimal" text="" placeholder="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yf-8W-jMO">
-                                <rect key="frame" x="13" y="88" width="348" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="6yf-8W-jMO" secondAttribute="height" multiplier="116:17" id="JUr-mY-8XR"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="B9Z-Tt-dNb" id="7jy-mB-Un8"/>
-                                </connections>
-                            </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3kV-z4-7p2">
-                                <rect key="frame" x="12" y="139" width="352" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="3kV-z4-7p2" secondAttribute="height" multiplier="352:31" id="kFG-IV-9BH"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Movies"/>
-                                    <segment title="Music"/>
-                                    <segment title="Apps"/>
-                                    <segment title="Books"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="selectedSegmentTintColor" systemColor="systemGray4Color"/>
-                                <connections>
-                                    <action selector="categories:" destination="B9Z-Tt-dNb" eventType="valueChanged" id="lVQ-2t-bex"/>
-                                </connections>
-                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97O-Kr-Dew">
                                 <rect key="frame" x="0.0" y="188" width="375" height="603"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -143,6 +110,42 @@
                                     <outlet property="delegate" destination="B9Z-Tt-dNb" id="ykx-qD-RqL"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="KqY-0L-tWc">
+                                <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <searchBar contentMode="scaleToFill" searchBarStyle="minimal" text="" placeholder="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yf-8W-jMO">
+                                <rect key="frame" x="13" y="88" width="348" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6yf-8W-jMO" secondAttribute="height" multiplier="116:17" id="JUr-mY-8XR"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="B9Z-Tt-dNb" id="7jy-mB-Un8"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3kV-z4-7p2">
+                                <rect key="frame" x="12" y="139" width="352" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3kV-z4-7p2" secondAttribute="height" multiplier="352:31" id="kFG-IV-9BH"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Movies"/>
+                                    <segment title="Music"/>
+                                    <segment title="Apps"/>
+                                    <segment title="Books"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" systemColor="systemGray4Color"/>
+                                <connections>
+                                    <action selector="categories:" destination="B9Z-Tt-dNb" eventType="valueChanged" id="lVQ-2t-bex"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aUH-S1-W0N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -150,16 +153,19 @@
                             <constraint firstItem="6yf-8W-jMO" firstAttribute="top" secondItem="aUH-S1-W0N" secondAttribute="top" id="08X-hP-wx6"/>
                             <constraint firstItem="3kV-z4-7p2" firstAttribute="top" secondItem="6yf-8W-jMO" secondAttribute="bottom" id="6Bx-GK-dyc"/>
                             <constraint firstItem="97O-Kr-Dew" firstAttribute="top" secondItem="aUH-S1-W0N" secondAttribute="top" constant="100" id="Bg7-3G-Rj7"/>
+                            <constraint firstItem="KqY-0L-tWc" firstAttribute="centerY" secondItem="p7L-r4-bSl" secondAttribute="centerY" id="OHH-rQ-hbe"/>
                             <constraint firstItem="aUH-S1-W0N" firstAttribute="trailing" secondItem="6yf-8W-jMO" secondAttribute="trailing" constant="14" id="RL4-RC-FQy"/>
                             <constraint firstItem="3kV-z4-7p2" firstAttribute="leading" secondItem="aUH-S1-W0N" secondAttribute="leading" constant="12" id="Rzb-R8-hx9"/>
                             <constraint firstItem="6yf-8W-jMO" firstAttribute="leading" secondItem="aUH-S1-W0N" secondAttribute="leading" constant="13" id="cd3-OO-T5a"/>
                             <constraint firstItem="97O-Kr-Dew" firstAttribute="trailing" secondItem="aUH-S1-W0N" secondAttribute="trailing" id="cqf-Rj-u77"/>
+                            <constraint firstItem="KqY-0L-tWc" firstAttribute="centerX" secondItem="p7L-r4-bSl" secondAttribute="centerX" id="p0T-sN-j6g"/>
                             <constraint firstItem="aUH-S1-W0N" firstAttribute="trailing" secondItem="3kV-z4-7p2" secondAttribute="trailing" constant="11" id="sd4-cV-Bow"/>
                             <constraint firstItem="97O-Kr-Dew" firstAttribute="leading" secondItem="aUH-S1-W0N" secondAttribute="leading" id="wjC-Y2-Tbg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="Crn-tn-TAa"/>
                     <connections>
+                        <outlet property="actIN" destination="KqY-0L-tWc" id="Vue-iz-aF2"/>
                         <outlet property="collectionView" destination="97O-Kr-Dew" id="oxu-B4-MsK"/>
                         <outlet property="searchBar" destination="6yf-8W-jMO" id="wCJ-H5-qGF"/>
                         <outlet property="segmentControl" destination="3kV-z4-7p2" id="BkL-FK-l5n"/>
@@ -167,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v22-9l-ts2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="769" y="98"/>
+            <point key="canvasLocation" x="768.79999999999995" y="97.536945812807886"/>
         </scene>
         <!--Details-->
         <scene sceneID="3ls-El-5cC">
