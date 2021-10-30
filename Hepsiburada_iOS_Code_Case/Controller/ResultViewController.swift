@@ -22,36 +22,26 @@ class ResultViewController: UIViewController,UISearchBarDelegate {
     
     //Segmented Control
     @IBAction func categories(_ sender: UISegmentedControl) {
+        cellNumber = 0 // In order to go top of the collectionview in each category we have to reset it first
+        self.collectionView.reloadData()
         switch segmentControl.selectedSegmentIndex
         {
         case 0:
             category = "movie";
-            cellNumber = 0 // In order to go top of the collectionview in each category we have rest it first
-            self.collectionView.reloadData()
-            searchApi()
         case 1:
             category = "song";
-            cellNumber = 0
-            self.collectionView.reloadData()
-            searchApi()
         case 2:
             category = "software";
-            cellNumber = 0
-            self.collectionView.reloadData()
-            searchApi()
         case 3:
             category = "audiobook";
-            cellNumber = 0
-            self.collectionView.reloadData()
-            searchApi()
         default:
             break;
         }
+        searchApi()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         searchApi()
     }
     
@@ -65,8 +55,12 @@ class ResultViewController: UIViewController,UISearchBarDelegate {
             self.collectionView.reloadData()
             return
         }
+        
+        // Clear the spaces between words
+        let newTerm = term.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        
         //Make request to api with Alamofire
-        AF.request("https://itunes.apple.com/search?term=\(term)&entity=\(category)").responseJSON{(result) in
+        AF.request("https://itunes.apple.com/search?term=\(newTerm)&entity=\(category)").responseJSON{(result) in
             if let datadecoded = result.value as? NSDictionary {
                 self.actIN.stopAnimating()
                 dataresult = datadecoded.value(forKey: "results") as! [NSDictionary]
@@ -86,10 +80,12 @@ extension ResultViewController: UICollectionViewDelegate,UICollectionViewDataSou
         searchApi()
     }
     
+    
+    // MARK: Number Of Items
     //How many items should be displayed
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.actIN.stopAnimating()
-        if(dataresult.count != 0 ){
+        if(dataresult.count > 0 ){
             if(dataresult.count < cellNumber){
                 return dataresult.count
             }
@@ -101,6 +97,7 @@ extension ResultViewController: UICollectionViewDelegate,UICollectionViewDataSou
         
     }
     
+    // MARK: Cell Properties
     //For giving attribute to cells in collectionview
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iTunesCollectionViewCell", for: indexPath) as! iTunesCollectionViewCell
@@ -116,14 +113,31 @@ extension ResultViewController: UICollectionViewDelegate,UICollectionViewDataSou
         //For price in results cell
         cell.priceLabel.text = "Price: " + (String(dataresult[indexPath.row].value(forKey: "collectionPrice") as? Double ?? dataresult[indexPath.row].value(forKey: "price") as? Double ?? 0)) + "$"
         //For date in results cell
-        let date = (dataresult[indexPath.row].value(forKey: "releaseDate") as? String)!.components(separatedBy: "T")
-        cell.dateLabel.text = "Date: " + date[0]
+        //let date = (dataresult[indexPath.row].value(forKey: "releaseDate") as? String)!.components(separatedBy: "T")
         
+        let isoDate = (dataresult[indexPath.row].value(forKey: "releaseDate") as? String)!
+
+        let dateFormatter = ISO8601DateFormatter()
+        let datevalue = dateFormatter.date(from:isoDate)!
+        let dateformat = DateFormatter()
+        dateformat.dateStyle = .short
+        dateformat.dateFormat = "d/MMM/y"
+        let date = dateformat.string(from: datevalue)
+        
+        
+        cell.dateLabel.text = "Date: " + date
+        
+        cell.layer.cornerRadius = 8
+        cell.layer.shadowOpacity = 0.2
+        
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cell.layer.shadowRadius = 4
         
         return cell
     }
     
-    //Pagination
+    // MARK: Pagination
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         //Increments the number of cells on the page when it comes to end of page
         if indexPath.row == cellNumber-1   {
@@ -133,35 +147,45 @@ extension ResultViewController: UICollectionViewDelegate,UICollectionViewDataSou
         }
     }
     
-    //Details Page
+    // MARK: Detail Page
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detail = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
+        let detail = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
         //For image in detail page
         let imageUrl = URL(string: dataresult[indexPath.row].value(forKey: "artworkUrl100") as! String)
         let imageData = try! Data(contentsOf: imageUrl!)
-        detail?.DetailImage = UIImage(data: imageData)
+        detail.DetailImage = UIImage(data: imageData)
         
         //For artist name in detail page
-        detail?.DetailArtistName = ("Artist Name: " + (dataresult[indexPath.row].value(forKey: "artistName") as? String ??  "No Artist Name"))
+        detail.DetailArtistName = ("Artist Name: " + (dataresult[indexPath.row].value(forKey: "artistName") as? String ??  "No Artist Name"))
+        
+        //For collection id in detail page
+        detail.DetailCollectionId = ("Collection ID: " + (String(dataresult[indexPath.row].value(forKey: "collectionId") as? Int ?? 0)))
         
         //For collection name in detail page
-        detail?.DetailCollectionName = ("Collection Name: " + (dataresult[indexPath.row].value(forKey: "collectionName") as? String ?? dataresult[indexPath.row].value(forKey: "collectionName") as? String ?? "Unknown"))
+        detail.DetailCollectionName = ("Collection Name: " + (dataresult[indexPath.row].value(forKey: "collectionName") as? String ?? dataresult[indexPath.row].value(forKey: "collectionName") as? String ?? "Unknown"))
         
         //For Track name in detail page
-        detail?.DetailTrackName = ("Track Name: " + (dataresult[indexPath.row].value(forKey: "trackName") as? String ?? "No Track Name"))
+        detail.DetailTrackName = ("Track Name: " + (dataresult[indexPath.row].value(forKey: "trackName") as? String ?? "No Track Name"))
         
         //For price in detail page
-        detail?.DetailPrice = ("Price: " + (String(dataresult[indexPath.row].value(forKey: "collectionPrice") as? Double ?? (dataresult[indexPath.row].value(forKey: "price") as? Double ?? 0)) + "$"))
+        detail.DetailPrice = ("Price: " + (String(dataresult[indexPath.row].value(forKey: "collectionPrice") as? Double ?? (dataresult[indexPath.row].value(forKey: "price") as? Double ?? 0)) + "$"))
         
         //For date in detail page
-        let date = (dataresult[indexPath.row].value(forKey: "releaseDate") as? String)!.components(separatedBy: "T")
-        detail?.DetailReleaseDate = ("Release Date: " + date[0])
+        let isoDate = (dataresult[indexPath.row].value(forKey: "releaseDate") as? String)!
+
+        let dateFormatter = ISO8601DateFormatter()
+        let datevalue = dateFormatter.date(from:isoDate)!
+        let dateformat = DateFormatter()
+        dateformat.dateStyle = .short
+        dateformat.dateFormat = "d/MMM/y"
+        let date = dateformat.string(from: datevalue)
+        detail.DetailReleaseDate = ("Release Date: " + date)
         
-        //For description in detail page
-        detail?.DetailDescription = ("Description: " + (dataresult[indexPath.row].value(forKey: "description") as? String ?? "No Description"))
+        //For genre in detail page
+        detail.DetailGenre = ("Genre: " + (dataresult[indexPath.row].value(forKey: "primaryGenreName") as? String ?? "No Genre"))
         
-        self.navigationController?.pushViewController(detail!, animated: true)
+        self.navigationController?.pushViewController(detail, animated: true)
     }
     
 }

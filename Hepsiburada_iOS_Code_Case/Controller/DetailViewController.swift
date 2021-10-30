@@ -16,8 +16,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailCollectionName: UILabel!
     @IBOutlet weak var detailTrackName: UILabel!
     @IBOutlet weak var detailPrice: UILabel!
-    @IBOutlet weak var detailDescription: UILabel!
     @IBOutlet weak var detailReleaseDate: UILabel!
+    @IBOutlet weak var detailgenre: UILabel!
+    @IBOutlet weak var detailCollectionId: UILabel!
     
     var DetailImage = UIImageView().image
     var DetailArtistName = ""
@@ -25,7 +26,8 @@ class DetailViewController: UIViewController {
     var DetailTrackName = ""
     var DetailPrice = ""
     var DetailReleaseDate = ""
-    var DetailDescription = ""
+    var DetailCollectionId = ""
+    var DetailGenre = ""
     
     
     override func viewDidLoad() {
@@ -33,11 +35,16 @@ class DetailViewController: UIViewController {
         
         detailImage.image = DetailImage
         detailArtistName.text = DetailArtistName
+        detailCollectionId.text = DetailCollectionId
         detailCollectionName.text = DetailCollectionName
         detailTrackName.text = DetailTrackName
         detailPrice.text = DetailPrice
         detailReleaseDate.text = DetailReleaseDate
-        detailDescription.text = DetailDescription
+        detailgenre.text = DetailGenre
+        
+        
+        detailImage.layer.cornerRadius = 8
+        
     }
 
 }
