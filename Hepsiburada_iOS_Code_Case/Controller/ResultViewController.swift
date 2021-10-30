@@ -65,8 +65,12 @@ class ResultViewController: UIViewController,UISearchBarDelegate {
             self.collectionView.reloadData()
             return
         }
+        
+        // Clear the spaces between words
+        let newTerm = term.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        
         //Make request to api with Alamofire
-        AF.request("https://itunes.apple.com/search?term=\(term)&entity=\(category)").responseJSON{(result) in
+        AF.request("https://itunes.apple.com/search?term=\(newTerm)&entity=\(category)").responseJSON{(result) in
             if let datadecoded = result.value as? NSDictionary {
                 self.actIN.stopAnimating()
                 dataresult = datadecoded.value(forKey: "results") as! [NSDictionary]
