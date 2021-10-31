@@ -20,6 +20,10 @@
 		56BE19FC272BF4E60039FD2A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BE19FB272BF4E60039FD2A /* DetailViewController.swift */; };
 		56FF8EDE2726F639001E2E5E /* iTunesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF8EDD2726F639001E2E5E /* iTunesCollectionViewCell.swift */; };
 		56FF8EE02726FA36001E2E5E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF8EDF2726FA36001E2E5E /* ResultViewController.swift */; };
+		56FF95BA272E8A2E0036F05F /* collectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF95B9272E8A2E0036F05F /* collectionViewExtension.swift */; };
+		56FF95BC272E8BFF0036F05F /* searchApiExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF95BB272E8BFF0036F05F /* searchApiExtension.swift */; };
+		56FF95BE272E8CE20036F05F /* cellDetailExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF95BD272E8CE20036F05F /* cellDetailExtension.swift */; };
+		56FF95C0272E8DB00036F05F /* detailPageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FF95BF272E8DB00036F05F /* detailPageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,10 @@
 		56BE19FB272BF4E60039FD2A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		56FF8EDD2726F639001E2E5E /* iTunesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesCollectionViewCell.swift; sourceTree = "<group>"; };
 		56FF8EDF2726FA36001E2E5E /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		56FF95B9272E8A2E0036F05F /* collectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collectionViewExtension.swift; sourceTree = "<group>"; };
+		56FF95BB272E8BFF0036F05F /* searchApiExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchApiExtension.swift; sourceTree = "<group>"; };
+		56FF95BD272E8CE20036F05F /* cellDetailExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellDetailExtension.swift; sourceTree = "<group>"; };
+		56FF95BF272E8DB00036F05F /* detailPageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailPageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +157,10 @@
 			children = (
 				5652BDAA2726ADB700A7E8A7 /* iTunesApiManager.swift */,
 				56FF8EDD2726F639001E2E5E /* iTunesCollectionViewCell.swift */,
+				56FF95B9272E8A2E0036F05F /* collectionViewExtension.swift */,
+				56FF95BB272E8BFF0036F05F /* searchApiExtension.swift */,
+				56FF95BD272E8CE20036F05F /* cellDetailExtension.swift */,
+				56FF95BF272E8DB00036F05F /* detailPageExtension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,9 +311,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56FF95BC272E8BFF0036F05F /* searchApiExtension.swift in Sources */,
 				565FF1622725CDB900D51A61 /* AppDelegate.swift in Sources */,
 				56FF8EE02726FA36001E2E5E /* ResultViewController.swift in Sources */,
+				56FF95C0272E8DB00036F05F /* detailPageExtension.swift in Sources */,
+				56FF95BE272E8CE20036F05F /* cellDetailExtension.swift in Sources */,
 				5652BDAB2726ADB800A7E8A7 /* iTunesApiManager.swift in Sources */,
+				56FF95BA272E8A2E0036F05F /* collectionViewExtension.swift in Sources */,
 				56FF8EDE2726F639001E2E5E /* iTunesCollectionViewCell.swift in Sources */,
 				565FF1642725CDB900D51A61 /* SceneDelegate.swift in Sources */,
 				56BE19FC272BF4E60039FD2A /* DetailViewController.swift in Sources */,
