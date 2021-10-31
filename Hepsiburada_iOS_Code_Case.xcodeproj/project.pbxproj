@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		563FF41A272D8198009C348D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 563FF419272D8198009C348D /* Alamofire */; };
-		5652BDAB2726ADB800A7E8A7 /* iTunesApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652BDAA2726ADB700A7E8A7 /* iTunesApiManager.swift */; };
 		565FF1622725CDB900D51A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FF1612725CDB900D51A61 /* AppDelegate.swift */; };
 		565FF1642725CDB900D51A61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FF1632725CDB900D51A61 /* SceneDelegate.swift */; };
 		565FF1692725CDB900D51A61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 565FF1672725CDB900D51A61 /* Main.storyboard */; };
@@ -44,7 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5652BDAA2726ADB700A7E8A7 /* iTunesApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesApiManager.swift; sourceTree = "<group>"; };
 		565FF15E2725CDB900D51A61 /* Hepsiburada_iOS_Code_Case.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hepsiburada_iOS_Code_Case.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		565FF1612725CDB900D51A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		565FF1632725CDB900D51A61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 		565FF1922725CFB800D51A61 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5652BDAA2726ADB700A7E8A7 /* iTunesApiManager.swift */,
 				56FF8EDD2726F639001E2E5E /* iTunesCollectionViewCell.swift */,
 				56FF95B9272E8A2E0036F05F /* collectionViewExtension.swift */,
 				56FF95BB272E8BFF0036F05F /* searchApiExtension.swift */,
@@ -316,7 +313,6 @@
 				56FF8EE02726FA36001E2E5E /* ResultViewController.swift in Sources */,
 				56FF95C0272E8DB00036F05F /* detailPageExtension.swift in Sources */,
 				56FF95BE272E8CE20036F05F /* cellDetailExtension.swift in Sources */,
-				5652BDAB2726ADB800A7E8A7 /* iTunesApiManager.swift in Sources */,
 				56FF95BA272E8A2E0036F05F /* collectionViewExtension.swift in Sources */,
 				56FF8EDE2726F639001E2E5E /* iTunesCollectionViewCell.swift in Sources */,
 				565FF1642725CDB900D51A61 /* SceneDelegate.swift in Sources */,
